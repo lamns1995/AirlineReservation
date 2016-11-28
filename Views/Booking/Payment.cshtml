@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form ng-controller="booking.payment.controller" data-ng-init="Init()" class="form-horizontal">
+    <section class="container body-content">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-up"></a>
+            </div>
+            <h1>Payment</h1>
+        </header>
+        <br />
+        <hr />
+        <div class="container">
+            <div><h3>Booking Information</h3></div>
+            <hr />            
+            <label class="col-sm-2">Arrive:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.BookingCode" name="To">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Date:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.TimeReservation" name="Date">
+            </div>
+            <br />
+            <br /><label class="col-sm-2">Price:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.TotalAmount|number" name="Price">
+            </div>
+            <br />
+            <hr />
+            <br />
+        </div>
+        <div class="date_btn">
+            <div class="col-sm-8">
+                <input type="submit" value="Pay" ng-click="Payment()">
+            </div>
+        </div>
+    </section>
+</form>
+@section Scripts {
+    <script>
+        var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
+
+    </script>
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/booking.payment.controller.js")
+}

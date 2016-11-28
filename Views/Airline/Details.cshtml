@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="panel" ng-controller="airline.details.controller" data-ng-init="Init()">
+
+    <div class="container body-content">
+        <div><h1>Departure Flight Options</h1></div>
+        <hr />
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive">
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 100px;">Flight</th>
+                            <th style="width: 100px;">Depart</th>
+                            <th style="width: 100px;">Arrive</th>
+                            <th style="width: 100px;">Date</th>
+                            <th style="width: 100px;">Time</th>
+                            <th style="width: 100px;">Class</th>
+                            <th style="width: 100px;">Cost</th>
+                            <th style="width: 100px;">NumberOfSeats</th>
+                            <th style="width: 100px;">Price</th>
+                            <th style="width: 80px;">Chose Your Ticket</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="i in flightList">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="i.FlightCode"></td>
+                            <td ng-bind="i.From"></td>
+                            <td ng-bind="i.To"></td>
+                            <td ng-bind="i.Date"></td>
+                            <td ng-bind="i.Time"></td>
+                            <td ng-bind="i.Class"></td>
+                            <td ng-bind="i.Cost"></td>
+                            <td ng-bind="i.NumberOfSeats"></td>
+                            <td ng-bind="i.Price|number"></td>
+                            <td>
+                                <input type="button" value="Book" ng-click="Confirm()" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+<script>
+    var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
+    var _flyingTo =@Html.Raw(Json.Encode(ViewData["FLYINGTO"]));
+    var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
+    var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
+    var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
+</script>
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.details.controller.js")
+}

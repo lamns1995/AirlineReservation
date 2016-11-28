@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel" ng-controller="booking.index.controller" data-ng-init="Init()">
+    <div class="container body-content">
+        <div>
+            <h1>Booking</h1>
+        </div>
+        <hr />
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive">
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 100px;">Booking Code</th>
+                            <th style="width: 100px;">Time Reservation</th>
+                            <th style="width: 100px;">Total Amount</th>
+                            <th style="width: 100px;">Status</th>
+                            <th style="width: 80px;">Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="i in bookingtList">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="i.BookingCode"></td>
+                            <td ng-bind="i.TimeReservation"></td>
+                            <td ng-bind="i.TotalAmount|number"></td>
+                            <td ng-bind="i.Status"></td>
+                            <td>
+                                <input ng-show="i.Status == 0" type="button" value="Payment" ng-click="Confirm(i)" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <label>Status 0: "UNPAID"</label>
+                <br />
+                <label>Status 1: "PAID"</label>
+            </div>
+        </div>
+        @*<div class="col-sm-8">
+                <div class="date_btn">
+                    <form>
+                        <input type="submit" value="Book">
+                    </form>
+                </div>
+            </div>*@
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/booking.index.controller.js")
+    @Scripts.Render("~/Scripts/AirlineReservation/Service/bookingService.js")
+}

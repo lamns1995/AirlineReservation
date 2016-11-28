@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel" ng-controller="flightdetails.index.controller" data-ng-init="Init()">
+    <div class="container body-content">
+        <div>
+            <h1>Flight Details</h1>
+        </div>
+        <hr />
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive">
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 100px;">Booking Code</th>
+                            <th style="width: 100px;">Flight Code</th>
+                            <th style="width: 100px;">Date</th>
+                            <th style="width: 100px;">Class</th>
+                            <th style="width: 100px;">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="i in flightDetailsList">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="i.BookingCode"></td>
+                            <td ng-bind="i.FlightCode"></td>
+                            <td ng-bind="i.Date"></td>
+                            <td ng-bind="i.Class"></td>
+                            <td ng-bind="i.Cost"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/flightdetails.index.controller.js")
+}

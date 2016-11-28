@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form ng-controller="airline.passenger.controller" data-ng-init="Init()" class="form-horizontal">
+    <section class="container body-content">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-up"></a>
+            </div>
+            <h1>Passenger</h1>
+        </header>
+        <br />
+        <hr />
+        <div class="container">
+            <div><h3>Passenger Information</h3></div>
+            <hr />
+            <label class="col-sm-2">Booking Code:</label>
+            <div class="col-sm-8">
+                <input disabled readonly="readonly" class="form-control color-red" type="text" ng-model="Model.BookingCode" name="BookingCode">
+
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Title:</label>
+            <div class="col-sm-8">
+                @*<input class="form-control color-red" type="text" ng-model="Model.Nickname" name="Nickname">*@
+                <div class="section_room">
+                    <select id="Nickname"
+                            class="sc-select form-control"
+                            ng-model="Title"
+                            sc-select2
+                            ng-options="o.Value as o.Text for o in listTitleValue"></select>
+                </div>
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Middle name:</label>
+            <div class="col-sm-8">
+                <input class="form-control text-uppercase" type="text" ng-model="Model.Surname" name="Surname">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Last/Family name:</label>
+            <div class="col-sm-6">
+                <input class="form-control text-uppercase" type="text" ng-model="Model.Name" name="Name">
+            </div>
+            <br />
+            <hr />
+        </div>
+        <div class="date_btn">
+            <div class="col-sm-8">
+                <input type="submit" value="Continue" ng-click="AddPassenger()">
+            </div>
+        </div>
+    </section>
+</form>
+@section Scripts {
+    <script>
+        var _bookingCode =@Html.Raw(Json.Encode(ViewData["BOOKINGCODE"]));
+
+    </script>
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.passenger.controller.js")
+    @Scripts.Render("~/Scripts/AirlineReservation/Service/airlineService.js")
+}

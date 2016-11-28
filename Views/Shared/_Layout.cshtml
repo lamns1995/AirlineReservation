@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body ng-app="app">
+    <div class="header">
+        <div class="container">
+            <div class="header-grids">
+                <div class="logo">
+                    <h1><a href="~/airline/index"><span>Airline Reservation</span></a></h1>
+                </div>
+                <!--navbar-header-->
+                <div class="header-dropdown">
+                    <div class="emergency-grid">
+                        <ul>
+                            <li>Contract : </li>
+                            <li class="call">+94 8822999</li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="nav-top" ng-controller="layout.controller">
+                <div class="top-nav">
+                    <span class="menu"><img src="~/Template/images/menu.png" alt=""></span>
+                    <ul class="nav1">
+                        <li ng-class="menuClass('/airline/index')"><a href="~/airline/index" >Flights</a></li>
+                        <li ng-class="menuClass('/booking/index')"><a href="~/booking/index">Booking</a></li>
+                        <li ng-class="menuClass('/flightdetails/index')"><a href="~/flightdetails/index">Flight Details</a></li>
+                        <li ng-class="menuClass('/passenger/index')"><a href="~/passenger/index">Passenger</a></li>
+                        <li ng-class="menuClass('/login/securityinfo')"><a href="~/login/securityinfo">Admin</a></li>
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="container body-content">*@
+    <div>
+        @RenderBody()
+        <hr />
+    </div>
+    <div class="footer-bottom-grids">
+        <!-- container -->
+        <div class="container">
+            <div class="footer-bottom-top-grids">
+                <div class="col-md-4 footer-bottom-left">
+                    <h4>Download our mobile Apps</h4>
+                    <div class="d-apps">
+                        <ul>
+                            <li><a href="#"><img src="~/Template/images/app1.png" alt=""></a></li>
+                            <li><a href="#"><img src="~/Template/images/app2.png" alt=""></a></li>
+                            <li><a href="#"><img src="~/Template/images/app3.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-bottom-left">
+                    <h4>We Accept</h4>
+                    <div class="a-cards">
+                        <ul>
+                            <li><a href="#"><img src="~/Template/images/c1.png" alt=""></a></li>
+                            <li><a href="#"><img src="~/Template/images/c2.png" alt=""></a></li>
+                            <li><a href="#"><img src="~/Template/images/c3.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 footer-bottom-left">
+                    <h4>Follow Us</h4>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#" class="facebook"> </a></li>
+                            <li><a href="#" class="facebook twitter"> </a></li>
+                            <li><a href="#" class="facebook chrome"> </a></li>
+                            <li><a href="#" class="facebook dribbble"> </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+                <div class="copyright">
+                    <footer>
+                        <p>&copy; @DateTime.Now.Year - Lam Nguyen Son</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

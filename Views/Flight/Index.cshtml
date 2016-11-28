@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="panel" ng-controller="flight.index.controller" data-ng-init="init()">
+    <div class="container body-content">
+        <div>
+            <h1>All Flight</h1>
+            <input type="button" class="btn" value="logoff" ng-click="logout()" />
+        </div>
+        <hr />
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive">
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 100px;">Flight</th>
+                            <th style="width: 100px;">Depart</th>
+                            <th style="width: 100px;">Arrive</th>
+                            <th style="width: 100px;">Date</th>
+                            <th style="width: 100px;">Time</th>
+                            <th style="width: 100px;">Class</th>
+                            <th style="width: 100px;">Cost</th>
+                            <th style="width: 100px;">NumberOfSeats</th>
+                            <th style="width: 100px;">Price</th>
+                            <th style="width: 40px;"><a data-toggle="tooltip" title="Add New Flight" ng-click="add()" class="btn btn-primary"> <i class="glyphicon glyphicon-plus"></i></a></th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="i in listItems">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="i.FlightCode"></td>
+                            <td ng-bind="i.From"></td>
+                            <td ng-bind="i.To"></td>
+                            <td ng-bind="i.Date"></td>
+                            <td ng-bind="i.Time"></td>
+                            <td ng-bind="i.Class"></td>
+                            <td ng-bind="i.Cost"></td>
+                            <td ng-bind="i.NumberOfSeats"></td>
+                            <td ng-bind="i.Price|number"></td>
+                            <td class="">
+                                <a ng-click="edit(i)" class="btn btn-primary" data-toggle="tooltip" title="Edit Flight"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a ng-click="delete(i)" class="btn btn-danger" data-toggle="tooltip" title="Delete Flight"><i class="glyphicon glyphicon-remove"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</section>
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/flight.index.controller.js")
+}
+
+@*<html ng-app="appmodule">
+    <head>
+
+    </head>
+    <body ng-controller="emplcontroller">
+        <div class="container body-content">
+            <h1>Flight Information</h1>
+            <h2>
+                <span>{{userName}}</span>
+                <input type="button" class="btn" value="logoff" ng-click="logout()" />
+            </h2>
+            <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+                <div class="table-responsive">
+                    <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                        <thead>
+                            <tr role="row">
+                                <th style="width: 100px;">Flight</th>
+                                <th style="width: 100px;">Depart</th>
+                                <th style="width: 100px;">Arrive</th>
+                                <th style="width: 100px;">Date</th>
+                                <th style="width: 100px;">Time</th>
+                                <th style="width: 100px;">Class</th>
+                                <th style="width: 100px;">Cost</th>
+                                <th style="width: 100px;">NumberOfSeats</th>
+                                <th style="width: 100px;">Price</th>
+                                <th style="width: 40px;"><a data-toggle="tooltip" title="Add New Flight" ng-click="add()" class="btn btn-primary"> <i class="glyphicon glyphicon-plus"></i></a></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="i in Employees">
+                            <tr role="row" class="gradeA odd">
+                                <td ng-bind="i.FlightCode"></td>
+                                <td ng-bind="i.From"></td>
+                                <td ng-bind="i.To"></td>
+                                <td ng-bind="i.Date"></td>
+                                <td ng-bind="i.Time"></td>
+                                <td ng-bind="i.Class"></td>
+                                <td ng-bind="i.Cost"></td>
+                                <td ng-bind="i.NumberOfSeats"></td>
+                                <td ng-bind="i.Price|number"></td>
+                                <td class="">
+                                    <a ng-click="edit(i)" class="btn btn-primary" data-toggle="tooltip" title="Edit Flight"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a ng-click="delete(i)" class="btn btn-danger" data-toggle="tooltip" title="Delete Flight"><i class="glyphicon glyphicon-remove"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <span>{{Message}}</span>
+            </div>
+        </div>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/Scripts/MyScripts/Module.js")
+        @Scripts.Render("~/Scripts/MyScripts/EmpService.js")
+        @Scripts.Render("~/Scripts/MyScripts/EmployeeController.js")
+    </body>
+    </html>*@

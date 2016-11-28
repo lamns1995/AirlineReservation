@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form ng-controller="airline.confirm.controller" data-ng-init="Init()" class="form-horizontal">
+    <section class="container body-content">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-up"></a>
+            </div>
+            <h1>Confirmed Flight Booking</h1>
+        </header>
+        <br />
+        <hr />
+        <div class="container">
+            <div><h3>Flight Information</h3></div>
+            <hr />
+            <label class="col-sm-2">Flight:</label>
+            <div class="col-sm-8">
+                <input disabled readonly="readonly" class="form-control color-red" type="text" ng-model="Model.FlightCode" name="FlightCode">
+
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Depart:</label>
+            <div class="col-sm-8">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.From" name="From">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Arrive:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.To" name="To">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Date:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.Date" name="Date">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Time:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.Time" name="Time">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Class:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.Class" name="Class">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Cost:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.Cost" name="Cost">
+            </div>
+            <br />
+            <br />
+            <label class="col-sm-2">Price:</label>
+            <div class="col-sm-6">
+                <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.Price|number" name="Price">
+            </div>
+            <br />
+            <hr />
+            <br />
+        </div>        
+        <div class="date_btn">
+            <div class="col-sm-8">
+                <input type="submit" value="Continue" ng-click="AddFlightDetails()">
+            </div>
+        </div>
+    </section>
+</form>
+@section Scripts {
+    <script>
+        var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
+        var _flyingTo =@Html.Raw(Json.Encode(ViewData["FLYINGTO"]));
+        var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
+        var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
+        var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
+    </script>
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.confirm.controller.js")
+}
