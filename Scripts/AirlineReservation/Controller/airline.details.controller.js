@@ -18,14 +18,14 @@ angular.module('app').controller('airline.details.controller', function ($scope,
             if (response.Success) {
                 $scope.flightList = response.Data;
                 if ($scope.flightList.length == 0) {
-                    alert('No Flights From ' + flightReq.flyingFrom + ' To ' + flightReq.flyingTo + ' In ' + flightReq.flyingDate);
+                    alert('No Flights From ' + flightReq.flyingFrom + ' To ' + flightReq.flyingTo + ' For ' + flightReq.flyingClass + ' ' + flightReq.flyingCost + ' Class' + ' In ' + flightReq.flyingDate);
                     location.href = "/airline/index/";
                 }
             }
         });
     };
 
-    $scope.Confirm = function () {
-        location.href = "/airline/confirm/" + flightReq.flyingFrom + "/" + flightReq.flyingTo + "/" + moment(flightReq.flyingDate).format("MMDDYYYY") + "/" + flightReq.flyingClass + "/" + flightReq.flyingCost;
+    $scope.Confirm = function (i) {
+        location.href = "/airline/confirm/" + i.From + "/" + i.To + "/" + moment(i.Date).format("MMDDYYYY") + "/" + i.Class + "/" + i.Cost + "/" + i.FlightCode;
     }
 });

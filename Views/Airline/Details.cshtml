@@ -5,10 +5,22 @@
 <section class="panel" ng-controller="airline.details.controller" data-ng-init="Init()">
 
     <div class="container body-content">
-        <div><h1>Departure Flight Options</h1></div>
-        <hr />
+
+        <div class="wizard">
+            <a><span class="badge">1</span> Search</a>
+            <a class="current"><span class="badge badge-inverse">2</span> Flights</a>
+            <a><span class="badge">3</span> Confirmation</a>
+            <a><span class="badge">4</span> Passengers</a>
+            <a><span class="badge">5</span> Payment</a>
+        </div>
+        <br />
+        <br />
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"><h2>Departure Flight Options</h2></div>
+        <br />
         <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
             <div class="table-responsive">
+                <br />
                 <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
                     <thead>
                         <tr role="row">
@@ -21,7 +33,7 @@
                             <th style="width: 100px;">Cost</th>
                             <th style="width: 100px;">NumberOfSeats</th>
                             <th style="width: 100px;">Price</th>
-                            <th style="width: 80px;">Chose Your Ticket</th>
+                            <th style="width: 80px;">Choose Your Ticket</th>
                         </tr>
                     </thead>
                     <tbody ng-repeat="i in flightList">
@@ -36,7 +48,8 @@
                             <td ng-bind="i.NumberOfSeats"></td>
                             <td ng-bind="i.Price|number"></td>
                             <td>
-                                <input type="button" value="Book" ng-click="Confirm()" />
+                                <input type="button" class="myButtonBook" ng-hide="i.NumberOfSeats == 0" value="Book" ng-click="Confirm(i)" />
+                                <div ng-show="i.NumberOfSeats == 0">Sold out</div>
                             </td>
                         </tr>
                     </tbody>
@@ -46,12 +59,12 @@
     </div>
 </section>
 @section Scripts {
-<script>
-    var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
-    var _flyingTo =@Html.Raw(Json.Encode(ViewData["FLYINGTO"]));
-    var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
-    var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
-    var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
-</script>
+    <script>
+        var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
+        var _flyingTo =@Html.Raw(Json.Encode(ViewData["FLYINGTO"]));
+        var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
+        var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
+        var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
+    </script>
     @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.details.controller.js")
 }

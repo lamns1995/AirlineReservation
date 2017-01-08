@@ -4,17 +4,19 @@
 }
 <form ng-controller="booking.payment.controller" data-ng-init="Init()" class="form-horizontal">
     <section class="container body-content">
-        <header class="panel-heading">
-            <div class="panel-actions">
-                <a href="#" class="fa fa-caret-up"></a>
-            </div>
-            <h1>Payment</h1>
-        </header>
+        <div class="wizard">
+            <a><span class="badge">1</span> Search</a>
+            <a><span class="badge">2</span> Flights</a>
+            <a><span class="badge">3</span> Confirmation</a>
+            <a><span class="badge">4</span> Passengers</a>
+            <a class="current"><span class="badge badge-inverse">5</span> Payment</a>
+        </div>
         <br />
         <hr />
         <div class="container">
+            <div class="col-sm-2"></div>
             <div><h3>Booking Information</h3></div>
-            <hr />            
+            <hr />
             <label class="col-sm-2">Arrive:</label>
             <div class="col-sm-6">
                 <input disabled readonly="readonly" class="form-control text-uppercase" type="text" ng-model="Model.BookingCode" name="To">
@@ -32,11 +34,11 @@
             </div>
             <br />
             <hr />
-            <br />
         </div>
         <div class="date_btn">
+            <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <input type="submit" value="Pay" ng-click="Payment()">
+                <input class="myButtonPayment" type="submit" value="Pay" ng-click="Payment()">
             </div>
         </div>
     </section>

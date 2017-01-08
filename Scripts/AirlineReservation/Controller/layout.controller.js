@@ -5,7 +5,7 @@
         value1 = valuesSplit[3];
         value2 = valuesSplit[4];
         var current = "/" + value1 + "/" + value2;
-        //var current = $location.absUrl().substring(22);
+    //    //var current = $location.absUrl().substring(22);
         return page === current ? "active" : "";
     };
 });

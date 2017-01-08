@@ -1,4 +1,4 @@
-﻿angular.module("app").factory("loginservice", function ($http) {
+﻿angular.module("app").service("loginservice", function ($http) {
     //return {
     //    login: function (userlogin) {
     //        var resp = $http({

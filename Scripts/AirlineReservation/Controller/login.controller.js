@@ -1,4 +1,4 @@
-﻿angular.module('app').controller('login.controller', function ($scope, loginservice, $http, httpMethodsService) {
+﻿angular.module('app').controller('logincontroller', function ($scope, loginservice, $http, httpMethodsService) {
 
     //Scope Declaration
     $scope.responseData = "";

@@ -1,4 +1,4 @@
-﻿angular.module("app").factory("flightService", function ($http) {
+﻿angular.module("app").service("flightService", function ($http) {
     this.get = function () {
 
         var accesstoken = sessionStorage.getItem('accessToken');
@@ -9,7 +9,7 @@
         }
 
         var response = $http({
-            url: "/api/Admin/GetListBooking",
+            url: "/api/Admin/GetListFlight",
             method: "GET",
             headers: authHeaders
         });

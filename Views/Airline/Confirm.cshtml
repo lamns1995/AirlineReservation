@@ -4,15 +4,17 @@
 }
 <form ng-controller="airline.confirm.controller" data-ng-init="Init()" class="form-horizontal">
     <section class="container body-content">
-        <header class="panel-heading">
-            <div class="panel-actions">
-                <a href="#" class="fa fa-caret-up"></a>
-            </div>
-            <h1>Confirmed Flight Booking</h1>
-        </header>
+        <div class="wizard">
+            <a><span class="badge">1</span> Search</a>
+            <a><span class="badge">2</span> Flights</a>
+            <a class="current"><span class="badge badge-inverse">3</span> Confirmation</a>
+            <a><span class="badge">4</span> Passengers</a>
+            <a><span class="badge">5</span> Payment</a>
+        </div>
         <br />
-        <hr />
+        <br />
         <div class="container">
+            <div class="col-sm-2"></div>
             <div><h3>Flight Information</h3></div>
             <hr />
             <label class="col-sm-2">Flight:</label>
@@ -64,13 +66,16 @@
             </div>
             <br />
             <hr />
-            <br />
-        </div>        
-        <div class="date_btn">
-            <div class="col-sm-8">
-                <input type="submit" value="Continue" ng-click="AddFlightDetails()">
+        </div>
+        <div class="reservation">
+            <div class="date_btn">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <input class="myButton" type="submit" value="Continue" ng-click="AddFlightDetails()">
+                </div>
             </div>
         </div>
+        
     </section>
 </form>
 @section Scripts {
@@ -80,6 +85,7 @@
         var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
         var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
         var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
+        var _flyingDateReturn =@Html.Raw(Json.Encode(ViewData["FLYINGDATERETURN"]));
     </script>
     @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.confirm.controller.js")
 }

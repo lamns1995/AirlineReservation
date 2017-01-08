@@ -70,4 +70,12 @@
             + "/" + $scope.SelectedFlyingClass.Class
             + "/" + $scope.SelectedFlyingCost.Cost;
     }
+
+    $scope.OneWay = function () {
+        location.href = "/airline/index/"
+    }
+
+    $scope.Return = function () {
+        location.href = "/airline/indexreturn/"
+    }
 });

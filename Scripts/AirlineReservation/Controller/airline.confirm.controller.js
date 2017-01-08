@@ -11,6 +11,7 @@ angular.module('app').controller('airline.confirm.controller', function ($scope,
         flyingClass: _flyingClass,
         flyingCost: _flyingCost,
         flyingDate: _flyingDate,
+        flyingDateReturn: _flyingDateReturn,
     };
 
     $scope.Confirm = function () {

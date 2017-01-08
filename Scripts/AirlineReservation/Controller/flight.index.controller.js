@@ -1,15 +1,20 @@
-﻿angular.module('app').controller('flight.index.controller', function ($scope, $http, httpMethodsService) {
+﻿angular.module('app').controller('flight.index.controller', function ($scope, $http, flightService, httpMethodsService) {
     $scope.init = function () {
         $scope.search();
     };
     $scope.search = function () {
-        httpMethodsService.Get("/api/Flight/GetListFlight").then(function (response) {
+        httpMethodsService.Get("/api/Admin/GetListFlight").then(function (response) {
             if (response.Success) {
                 $scope.listItems = response.Data;
             } else {
                 alert('Error');
             }
         });
+    };
+    $scope.logout = function () {
+
+        sessionStorage.removeItem('accessToken');
+        window.location.href = '/Login/SecurityInfo';
     };
 
     $scope.delete = function (v) {
