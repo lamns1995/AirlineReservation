@@ -1,0 +1,186 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="banner">
+    <div class="container" ng-controller="airline.indexreturn.controller" data-ng-init="Init()">
+        <div class="col-md-4 banner-left">
+            <section class="slider2">
+                <div class="flexslider">
+
+                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                        <ul class="slides" style="width: 1400%; transition-duration: 0.6s; transform: translate3d(-700px, 0px, 0px);">
+
+                            <li class="flex-active-slide" style="width: 350px; float: left; display: block;">
+                                <div class="slider-info">
+                                    <img src="~/Template/images/2.jpg" alt="">
+                                </div>
+                            </li>
+                            <li class="" style="width: 350px; float: left; display: block;">
+                                <div class="slider-info">
+                                    <img src="~/Template/images/3.jpg" alt="">
+                                </div>
+                            </li>
+                            <li class="" style="width: 350px; float: left; display: block;">
+                                <div class="slider-info">
+                                    <img src="~/Template/images/4.jpg" alt="">
+                                </div>
+                            </li>
+                            <li class="" style="width: 350px; float: left; display: block;">
+                                <div class="slider-info">
+                                    <img src="~/Template/images/2.jpg" alt="">
+                                </div>
+                            </li>
+                            <li class="clone" style="width: 350px; float: left; display: block;">
+                                <div class="slider-info">
+                                    <img src="~/Template/images/1.jpg" alt="">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <ol class="flex-control-nav flex-control-paging">
+                        <li><a class="flex-active">1</a></li>
+                        <li><a class="">2</a></li>
+                        <li><a class="">3</a></li>
+                        <li><a class="">4</a></li>
+                        <li><a class="">5</a></li>
+                    </ol>
+                    <ul class="flex-direction-nav">
+                        <li><a class="flex-prev" href="#">Previous</a></li>
+                        <li><a class="flex-next" href="#">Next</a></li>
+                    </ul>
+                </div>
+            </section>
+            <!--FlexSlider-->
+        </div>
+
+        <div class="col-md-8 banner-right">
+            <div class="sap_tabs">
+                <div class="booking-info">
+                    <h2>Book Domestic & International Flight Tickets</h2>
+                </div>
+                <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <ul class="resp-tabs-list">
+                        <li class="resp-tab-item " aria-controls="tab_item-0" role="tab" ng-click="OneWay()"><span>One way</span></li>
+                        <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-1" role="tab" ng-click="Return()"><span>Round trip</span></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    <div class="facts">
+                        <div class="booking-form">
+                            <div class="online_reservation">
+                                <div class="b_room">
+                                    <div class="booking_room">
+                                        <div class="reservation">
+                                            <ul>
+                                                <li class="span1_of_1 desti">
+                                                    <h5>Flying from</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <div class="section_room">
+                                                                <select id="SelectedFlyingFrom"
+                                                                        class="sc-select form-control"
+                                                                        data-placeholder="Chose Departure City"
+                                                                        data-allow-clear="true" sc-select2
+                                                                        ng-change="FlyingFromChange()"
+                                                                        ng-model="SelectedFlyingFrom"
+                                                                        ng-options="x.From for x in listFlyingFrom"></select>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                                <li class="span1_of_1 left desti">
+                                                    <h5>Flying to</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <div class="section_room">
+                                                                <select id="SelectedFlyingTo"
+                                                                        class="sc-select form-control"
+                                                                        data-placeholder="Chose Arrive City"
+                                                                        data-allow-clear="true" sc-select2
+                                                                        ng-model="SelectedFlyingTo"
+                                                                        ng-options="y.To for y in listFlyingTo"></select>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="reservation">
+                                            <ul>
+                                                <li class="span1_of_1">
+                                                    <h5>Departure</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <input type="date" name="flyingDate" ng-model="flyingDate">
+
+                                                        </form>
+                                                    </div>
+                                                </li>
+
+                                                <li class="span1_of_1 left">
+                                                    <h5>Return</h5>
+                                                    <div class="book_date">
+                                                        <form>
+                                                            <input type="date" name="flyingDateReturn" ng-model="flyingDateReturn">
+
+                                                        </form>
+                                                    </div>
+                                                </li>
+
+                                                <li class="span1_of_3 left">
+                                                    <h5>Class</h5>
+                                                    <!----------start section_room----------->
+                                                    <div class="section_room">
+                                                        <select id="SelectedFlyingClass"
+                                                                class="sc-select form-control"
+                                                                data-allow-clear="true" sc-select2
+                                                                ng-model="SelectedFlyingClass"
+                                                                ng-options="z.Class for z in listFlyingClass"></select>
+
+                                                </li>
+
+                                                <li class="span1_of_3 left">
+                                                    <h5>Cost</h5>
+                                                    <!----------start section_room----------->
+                                                    <div class="section_room">
+                                                        <select id="SelectedFlyingCost"
+                                                                class="sc-select form-control"
+                                                                data-allow-clear="true" sc-select2
+                                                                ng-model="SelectedFlyingCost"
+                                                                ng-options="t.Cost for t in listFlyingCost"></select>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="reservation">
+                                            <ul>
+                                                <li class="span1_of_3">
+                                                    <div class="date_btn">
+                                                        <form>
+                                                            <input type="submit" value="FIND FLIGHT" ng-click="Search()">
+
+                                                        </form>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"> </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.indexreturn.controller.js")
+}

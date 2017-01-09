@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Airline Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="panel" ng-controller="airline.detailsreturn.controller" data-ng-init="Init()">
+
+    <div class="container body-content">
+        <div class="wizard">
+            <a><span class="badge">1</span> Search</a>
+            <a class="current"><span class="badge badge-inverse">2</span> Choose Departure Flights</a>
+            <a><span class="badge">3</span> Choose Return Flights</a>
+            <a><span class="badge">4</span> Confirmation</a>
+            <a><span class="badge">5</span> Passengers</a>
+            <a><span class="badge">6</span> Payment</a>
+        </div>
+        <br />
+        <div><h2>Departure Flight Options </h2></div>
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive" >
+                
+                <br />
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable" >
+                    <thead>
+                        <tr role="row" >
+                            <th style="width: 100px;">Flight</th>
+                            <th style="width: 100px;">Depart</th>
+                            <th style="width: 100px;">Arrive</th>
+                            <th style="width: 100px;">Date</th>
+                            <th style="width: 100px;">Time</th>
+                            <th style="width: 100px;">Class</th>
+                            <th style="width: 100px;">Cost</th>
+                            <th style="width: 100px;">NumberOfSeats</th>
+                            <th style="width: 100px;">Price</th>
+                            <th style="width: 80px;">Choose Your Ticket</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="i in flightListOneWay">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="i.FlightCode"></td>
+                            <td ng-bind="i.From"></td>
+                            <td ng-bind="i.To"></td>
+                            <td ng-bind="i.Date"></td>
+                            <td ng-bind="i.Time"></td>
+                            <td ng-bind="i.Class"></td>
+                            <td ng-bind="i.Cost"></td>
+                            <td ng-bind="i.NumberOfSeats"></td>
+                            <td ng-bind="i.Price|number"></td>
+                            <td>                                
+                                <input type="button" class="myButtonBook" ng-hide="i.NumberOfSeats == 0" value="Book" ng-click="Confirm(i)" />
+                                <div ng-show="i.NumberOfSeats == 0">Sold out</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
+        <hr />     
+        <br />
+        <div><h2>Return Flight Options</h2></div>
+        <div class="dataTables_wrapper no-footer" id="datatable-editable_wrapper">
+            <div class="table-responsive">
+
+                <br />
+                <table aria-describedby="datatable-editable_info" role="grid" class="table table-bordered table-striped mb-none dataTable no-footer" id="datatable-editable">
+                    <thead>
+                        <tr role="row">
+                            <th style="width: 100px;">Flight</th>
+                            <th style="width: 100px;">Depart</th>
+                            <th style="width: 100px;">Arrive</th>
+                            <th style="width: 100px;">Date</th>
+                            <th style="width: 100px;">Time</th>
+                            <th style="width: 100px;">Class</th>
+                            <th style="width: 100px;">Cost</th>
+                            <th style="width: 100px;">NumberOfSeats</th>
+                            <th style="width: 100px;">Price</th>
+                            <th style="width: 80px;">Choose Your Ticket</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="o in flightListReturn">
+                        <tr role="row" class="gradeA odd">
+                            <td ng-bind="o.FlightCode"></td>
+                            <td ng-bind="o.From"></td>
+                            <td ng-bind="o.To"></td>
+                            <td ng-bind="o.Date"></td>
+                            <td ng-bind="o.Time"></td>
+                            <td ng-bind="o.Class"></td>
+                            <td ng-bind="o.Cost"></td>
+                            <td ng-bind="o.NumberOfSeats"></td>
+                            <td ng-bind="o.Price|number"></td>
+                            <td>                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+    </div>
+</section>
+@section Scripts {
+<script>
+    var _flyingFrom =@Html.Raw(Json.Encode(ViewData["FLYINGFROM"]));
+    var _flyingTo =@Html.Raw(Json.Encode(ViewData["FLYINGTO"]));
+    var _flyingDate =@Html.Raw(Json.Encode(ViewData["FLYINGDATE"]));
+    var _flyingClass =@Html.Raw(Json.Encode(ViewData["FLYINGCLASS"]));
+    var _flyingCost =@Html.Raw(Json.Encode(ViewData["FLYINGCOST"]));
+    var _flyingDateReturn =@Html.Raw(Json.Encode(ViewData["FLYINGDATERETURN"]));
+</script>
+    @Scripts.Render("~/Scripts/AirlineReservation/Controller/airline.detailsreturn.controller.js")
+}
